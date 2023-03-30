@@ -49,7 +49,7 @@ const HomeCard = ({
               <button>
                 <div className="img">
                   <img src="./images/play-button.png" alt="" />
-                  <img src="./images/play.png" className="change" />
+                  <img src="./images/play.png" className="change" alt="play" />
                 </div>
                 WATCH TRAILER
               </button>

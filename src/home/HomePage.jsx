@@ -7,9 +7,9 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
 const HomePage = () => {
-  const [items, setItems] = useState(upcome);
-  const [item, setItem] = useState(latest);
-  const [rec, setRec] = useState(recommended);
+  const [items] = useState(upcome);
+  const [item] = useState(latest);
+  const [rec] = useState(recommended);
   return (
     <>
       <Header />

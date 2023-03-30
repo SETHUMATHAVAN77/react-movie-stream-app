@@ -4,7 +4,7 @@ import Home from "../homes/Home";
 import "./trending.css";
 
 const Trending = () => {
-  const [items, setItems] = useState(trending);
+  const [items] = useState(trending);
   return (
     <>
       <section className="trending">

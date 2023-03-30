@@ -16,7 +16,7 @@ const SinglePage = () => {
       setItem(item);
     }
   }, [id]);
-  const [rec, setRec] = useState(recommended);
+  const [rec] = useState(recommended);
 
   return (
     <>
@@ -60,9 +60,18 @@ const SinglePage = () => {
               </div>
               <div className="soical">
                 <h3>Share : </h3>
-                <img src="https://img.icons8.com/color/48/000000/facebook-new.png" />
-                <img src="https://img.icons8.com/fluency/48/000000/twitter-circled.png" />
-                <img src="https://img.icons8.com/fluency/48/000000/linkedin-circled.png" />
+                <img
+                  src="https://img.icons8.com/color/48/000000/facebook-new.png"
+                  alt="icon"
+                />
+                <img
+                  src="https://img.icons8.com/fluency/48/000000/twitter-circled.png"
+                  alt="icon"
+                />
+                <img
+                  src="https://img.icons8.com/fluency/48/000000/linkedin-circled.png"
+                  alt="icon"
+                />
               </div>
             </div>
           </section>
