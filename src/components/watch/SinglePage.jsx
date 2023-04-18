@@ -3,7 +3,7 @@ import "./style.css";
 import { useParams } from "react-router-dom";
 import { homeData, recommended } from "../../dummyData";
 import Upcomming from "../upcoming/Upcomming";
-import Header from "../../components/header/Header";
+
 import Footer from "../../components/footer/Footer";
 
 const SinglePage = () => {
@@ -20,9 +20,15 @@ const SinglePage = () => {
 
   return (
     <>
-      <Header />
       {item ? (
         <>
+          <div className="control-btn ">
+            <button className="prev">
+              <a href="/home">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+            </button>
+          </div>
           <section className="singlePage">
             <div className="singleHeading">
               <h1>{item.name} </h1> <span> | {item.time} | </span>{" "}

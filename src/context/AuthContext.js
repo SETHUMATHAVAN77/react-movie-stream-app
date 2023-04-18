@@ -6,20 +6,31 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  // user state
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  const [imageAsset, setImageAsset] = useState(null);
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [docId, setDocId] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  // signup
+  const clearUserData = () => {
+    setImageAsset(null);
+    setUserName("");
+    setEmail("");
+    setNumber("");
+    setAddress("");
+  };
+
+  // signUp
   const signUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password);
-    setDoc(doc(db, "users", email), {
-      savedShows: [],
-    });
+    clearUserData();
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // login
@@ -27,22 +38,47 @@ const AuthContextProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // logout
+  // logOut
   const logOut = () => {
+    clearUserData();
     return signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
     });
-    return () => {
-      unsubscribe();
-    };
-  });
+
+    return unsubscribe;
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
+    <AuthContext.Provider
+      value={{
+        signUp,
+        logIn,
+        logOut,
+        user,
+        userName,
+        setUserName,
+        email,
+        setEmail,
+        number,
+        setNumber,
+        address,
+        setAddress,
+        imageAsset,
+        setImageAsset,
+        docId,
+        setDocId,
+        userId,
+        setUserId,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
