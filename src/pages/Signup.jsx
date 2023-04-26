@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import SocialMedia from "../components/SocialMedia";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
