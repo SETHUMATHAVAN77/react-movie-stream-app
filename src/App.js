@@ -63,10 +63,17 @@ const App = () => {
         <Routes>
           {" "}
           <Route path="/" element={<Login />} />
-          <Route exact path="/home" element={<HomePage />} />
+          <Route
+            exact
+            path="/home"
+            element={<HomePage fetchUserDetails={fetchUserDetails} />}
+          />
           <Route path="/singlepage/:id" element={<SinglePage />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/userinfo" element={<UserInfo />} />
+          <Route
+            path="/userinfo"
+            element={<UserInfo fetchUserDetails={fetchUserDetails} />}
+          />
           <Route path="/addprofile" element={<AddProfile />} />
           <Route path="/editprofile/:id" element={<AddProfile />} />
         </Routes>

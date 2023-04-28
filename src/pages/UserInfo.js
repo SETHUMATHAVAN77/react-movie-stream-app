@@ -5,10 +5,16 @@ import { Link } from "react-router-dom";
 import profile from "../assets/images/user.jpg";
 
 import { UserAuth } from "../context/AuthContext";
+import { useEffect } from "react";
 
-const UserInfo = () => {
+const UserInfo = ({ fetchUserDetails }) => {
   const { user, userName, email, number, address, imageAsset, docId, userId } =
     UserAuth();
+
+  useEffect(() => {
+    fetchUserDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, user?.uid]);
 
   return (
     <>
