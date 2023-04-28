@@ -13,6 +13,7 @@ import { UserAuth } from "./context/AuthContext";
 // firebase
 import { db } from "./utils/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { useEffect } from "react";
 
 const App = () => {
   const {
@@ -51,23 +52,21 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    fetchUserDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, user?.uid]);
+
   return (
     <>
       <Router>
         <Routes>
           {" "}
           <Route path="/" element={<Login />} />
-          <Route
-            exact
-            path="/home"
-            element={<HomePage fetchUserDetails={fetchUserDetails} />}
-          />
+          <Route exact path="/home" element={<HomePage />} />
           <Route path="/singlepage/:id" element={<SinglePage />} />
           <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/userinfo"
-            element={<UserInfo fetchUserDetails={fetchUserDetails} />}
-          />
+          <Route path="/userinfo" element={<UserInfo />} />
           <Route path="/addprofile" element={<AddProfile />} />
           <Route path="/editprofile/:id" element={<AddProfile />} />
         </Routes>
