@@ -14,6 +14,7 @@ import { UserAuth } from "./context/AuthContext";
 import { db } from "./utils/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect } from "react";
+import WatchHistory from "./pages/WatchHistory";
 
 const App = () => {
   const {
@@ -74,6 +75,7 @@ const App = () => {
             path="/userinfo"
             element={<UserInfo fetchUserDetails={fetchUserDetails} />}
           />
+          <Route path="/history" element={<WatchHistory />} />
           <Route path="/addprofile" element={<AddProfile />} />
           <Route path="/editprofile/:id" element={<AddProfile />} />
         </Routes>

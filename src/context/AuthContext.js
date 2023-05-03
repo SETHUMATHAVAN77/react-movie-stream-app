@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth, db } from "../utils/firebase";
+import { auth } from "../utils/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -8,6 +8,10 @@ import {
 } from "firebase/auth";
 
 const AuthContext = createContext();
+
+let WatchHistory = localStorage.getItem("history")
+  ? JSON.parse(localStorage.getItem("history"))
+  : [];
 
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -18,6 +22,7 @@ const AuthContextProvider = ({ children }) => {
   const [address, setAddress] = useState("");
   const [docId, setDocId] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [history, setHistory] = useState(WatchHistory);
 
   const clearUserData = () => {
     setImageAsset(null);
@@ -26,6 +31,10 @@ const AuthContextProvider = ({ children }) => {
     setNumber("");
     setAddress("");
   };
+
+  useEffect(() => {
+    localStorage.setItem("history", JSON.stringify(history));
+  }, [history]);
 
   // signUp
   const signUp = (email, password) => {
@@ -77,6 +86,8 @@ const AuthContextProvider = ({ children }) => {
         setDocId,
         userId,
         setUserId,
+        history,
+        setHistory,
       }}
     >
       {children}

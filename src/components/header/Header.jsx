@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import "./header.css";
 import Tooltip from "react-bootstrap/Tooltip";
 import { OverlayTrigger } from "react-bootstrap";
@@ -93,8 +93,10 @@ const Header = () => {
                 </div>
               </OverlayTrigger>
             </div>
-            <i className="fa fa-search"></i>
-            <i class="fas fa-bell"></i>
+            <Link to={"/history"}>
+              <i className="fa fa-video"></i>
+            </Link>
+            <i className="fas fa-bell"></i>
             {/* <i className="fas fa-user"></i> */}
             {/* <button>Subscribe Now</button> */}
           </div>
