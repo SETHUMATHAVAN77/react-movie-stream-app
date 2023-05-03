@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { homeData, recommended } from "../../dummyData";
 import Upcomming from "../upcoming/Upcomming";
 
@@ -23,11 +23,11 @@ const SinglePage = () => {
       {item ? (
         <>
           <div className="control-btn ">
-            <button className="prev">
-              <a href="/home">
+            <Link to="/home">
+              <button className="prev">
                 <i class="fa fa-chevron-left"></i>
-              </a>
-            </button>
+              </button>
+            </Link>
           </div>
           <section className="singlePage">
             <div className="singleHeading">
