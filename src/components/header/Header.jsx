@@ -22,6 +22,25 @@ const Header = () => {
       Profile
     </Tooltip>
   );
+  const renderTooltipHistory = (props) => (
+    <Tooltip
+      className="text-white bg-black/20  px-3 py-1 rounded-lg text-xs md:text-base -mt-1 "
+      id="button-tooltip"
+      {...props}
+    >
+      Watch History
+    </Tooltip>
+  );
+
+  const renderTooltipLogout = (props) => (
+    <Tooltip
+      className="text-white bg-black/20 px-3 py-1 rounded-lg text-xs md:text-base "
+      id="button-tooltip"
+      {...props}
+    >
+      Log Out
+    </Tooltip>
+  );
 
   return (
     <>
@@ -60,12 +79,6 @@ const Header = () => {
               pauseOnHover={false}
               transition={Slide}
             />
-            <Link
-              to={"/"}
-              className="px-3 py-1 font-semibold rounded-xl bg-bill-600 text-red cursor-pointer"
-            >
-              Sign Out
-            </Link>
 
             <button className="toggle" onClick={() => setMobile(!Mobile)}>
               {Mobile ? (
@@ -94,11 +107,25 @@ const Header = () => {
               </OverlayTrigger>
             </div>
             <Link to={"/history"}>
-              <i className="fa fa-video"></i>
+              <OverlayTrigger
+                placement="top"
+                delay={{ show: 200, hide: 100 }}
+                overlay={renderTooltipHistory}
+              >
+                <i className="fa fa-video"></i>
+              </OverlayTrigger>
             </Link>
-            <i className="fas fa-bell"></i>
-            {/* <i className="fas fa-user"></i> */}
-            {/* <button>Subscribe Now</button> */}
+            <Link to={"/"}>
+              <OverlayTrigger
+                placement="top"
+                delay={{ show: 200, hide: 100 }}
+                overlay={renderTooltipLogout}
+              >
+                <button className="font-semibold rounded-xl text-red-500 cursor-pointer">
+                  <i className="fa-solid fa-right-from-bracket"></i>{" "}
+                </button>
+              </OverlayTrigger>
+            </Link>
           </div>
         </div>
       </header>
