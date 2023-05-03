@@ -112,7 +112,9 @@ const Header = () => {
                 delay={{ show: 200, hide: 100 }}
                 overlay={renderTooltipHistory}
               >
-                <i className="fa-brands fa-youtube"></i>
+                <button className="font-semibold rounded-xl text-green-500 cursor-pointer">
+                  <i className="fa-brands fa-youtube"></i>
+                </button>
               </OverlayTrigger>
             </Link>
             <Link to={"/"}>
