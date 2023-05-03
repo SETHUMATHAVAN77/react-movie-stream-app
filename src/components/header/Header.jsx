@@ -112,7 +112,7 @@ const Header = () => {
                 delay={{ show: 200, hide: 100 }}
                 overlay={renderTooltipHistory}
               >
-                <i className="fa fa-video"></i>
+                <i className="fa-brands fa-youtube"></i>
               </OverlayTrigger>
             </Link>
             <Link to={"/"}>
